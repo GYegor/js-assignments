@@ -59,6 +59,8 @@ function getJSON(obj) {
  */
 function fromJSON(proto, json) {
 // return  JSON.parse(json).apply(proto);
+JSON.parse(json).__proto__ = proto;
+return JSON.parse(json);
 
 }
 
