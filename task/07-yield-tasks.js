@@ -87,7 +87,7 @@ function* depthTraversalTree(root) {
 
 
 /**
- * Traverses a tree using the breadth-first strategy
+ * c a tree using the breadth-first strategy
  * See details: https://en.wikipedia.org/wiki/Breadth-first_search
  *
  * Each node have child nodes in node.children array.
@@ -125,8 +125,22 @@ function* breadthTraversalTree(root) {
  *   [ 0 ], [ 2, 4, 6, ... ]  => [ 0, 2, 4, 6, ... ]
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
-function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+function mergeSortedSequences(source1, source2) {
+    let mergedArr = [];
+    for (let i = 0; i < source1.length + source2.length; i++) {
+        if (source1[0] > source2[0]) {
+            mergedArr.push(source1[0]);
+            source1.splice(0,1);
+            i--; 
+            if (source1.length == 0) break;
+        } else {
+            mergedArr.push(source2[0]);
+            source2.splice(0,1);
+            i--; 
+            if (source2.length == 0) break;
+        }
+    }
+    return mergedArr;
 }
 
 
